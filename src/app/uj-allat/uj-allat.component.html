@@ -1,0 +1,46 @@
+<div class="container">
+    <h2 class="my-4 text-center">Új állat regisztrálása</h2>
+    <div class="row">
+        <div class="offset-lg-3 offset-md-2 col-lg-6 col-md-8 col-12">
+
+            <!-- inputban a name mező értéke ua. legyen, mint az ngModel-ben!!! -->
+            <div class="mb-3">
+                <label for="nev"> Új állat neve </label>
+                <input class="form-control" type="text" id="nev" name="nev" [(ngModel)]="ujAllat.nev">
+            </div>
+
+            <div class="mb-3">
+                <label for="faj"> Faja az állatnak </label>
+                <input class="form-control" type="text" id="faj" name="faj" [(ngModel)]="ujAllat.faj">
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Érkezés dátuma</label>
+                <input type="date" class="form-control" name="erkezes" [(ngModel)]="ujAllat.erkezes">
+            </div>
+
+            <div class="mb-3">
+                <label for="helye"> Helye az állatkertben </label>
+                <input class="form-control" type="text" id="helye" name="helye" [(ngModel)]="ujAllat.helye">
+            </div>
+
+            <div class="mb-3">
+                <label for="gondozo" class="form-label">Gondozója</label>
+                <select class="form-control" name="gondozo" id="gondozo" [(ngModel)]="ujAllat.gondozo">
+                    <option>Kérem válasszon</option>
+                    <option *ngFor="let gondozo of alkalmazottak">{{gondozo.nev}}</option>                    
+                </select>
+            </div>
+
+            <div class="mb-3 text-center">
+                <button class="btn btn-primary px-5" (click)="felvetel()">Felvétel</button>
+            </div>
+
+            <div *ngIf="hibaUzenet != ''" class="alert alert-danger alert-dismissible" role="alert">
+                <strong>{{hibaUzenet}}</strong>
+                <button type="button" class="btn-close" (click)="hibaUzenet=''"></button>
+            </div>
+
+        </div>
+    </div>
+</div>
